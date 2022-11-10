@@ -1,5 +1,6 @@
 <div class="user_info">
   <h1>User info</h1>
+    
 </div>
 
 <div class="new_book">
@@ -13,28 +14,25 @@
     <% end %>
 </div>
 
-<div class="book_detail">
-  <h1>Book detail</h1>
+<div class="users">
+  <h1>Users</h1>
   <table>
     <thead>
       <tr>
-        <th>Title</th>
-        <th>Opinion</th>
+        <th>image</th>
+        <th>name</th>
       </tr>
     </thead>
     <tbody>
+      <% @users.each do |user| %>
       <tr>
-        <td>画像</td>
-        <td><%= @book.title %></td>
-        <td><%= @book.body %></td>
+        <td><%= image_tag user.get_profile_image(100, 100) %></td>
         <td>
-          <% if @book.user == current_user %>
-          <%= link_to "Edit", edit_book_path(@book.id) %>
-          <%= link_to "Destroy", book_path(@book), method: :delete %>
-          <% end %>
-        </td>
+          <%= user.name %></td>
+        <td>
+          <%= link_to "show", user_path(user.id) %></td>
       </tr>
+      <% end %>
     </tbody>
   </table>
 </div>
-
