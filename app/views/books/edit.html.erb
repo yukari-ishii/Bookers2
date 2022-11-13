@@ -1,6 +1,6 @@
 <div class="editing_book">
   <%= form_with model:@book, url: book_path(@book.id), method: :patch do |f| %>
-    <h2>Editing book</h2>
+    <h2>Editing Book</h2>
     
     <% if @book.errors.any? %>
       <h3><%= @book.errors.count %>error prohibited this obj from being saved:</h3>

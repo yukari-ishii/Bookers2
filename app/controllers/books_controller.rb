@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+ before_action :correct_user, only: [:edit, :update]
   def index
     #一覧表示のための変数
     @books = Book.all
@@ -24,21 +25,12 @@ class BooksController < ApplicationController
   end
 
   def edit
-    user_id = params[:id].to_i
-    login_user_id = current_user.id
-    if(user_id != login_user_id)
-      redirect_to books_path
-    end
     @book = Book.find(params[:id])
   end
 
   def update
-    user_id = params[:id].to_i
-    login_user_id = current_user.id
-    if(user_id != login_user_id)
-      redirect_to books_path
-    end
     @book = Book.find(params[:id])
+
     if @book.update(book_params)
       flash[:notice] = "You have updated book successfully."
       redirect_to book_path(@book.id)
@@ -58,5 +50,14 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :body)
   end
+
+  def correct_user
+    book = Book.find(params[:id])
+    user = book.user
+    if user != current_user
+    redirect_to users_path
+    end
+  end
+
 
 end
