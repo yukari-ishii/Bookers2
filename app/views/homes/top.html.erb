@@ -1,3 +1,4 @@
+<div><%= flash[:notice] %></div>
 <h1 class="text-center">welcome to <i class="fa-solid fa-book"></i>
   <span class="font-weight-bold">Bookers!!</span>
 </h1>
@@ -9,10 +10,8 @@
        about various books!
     </p>
   </div>
-  <div class="login_bottun">
-    <%= link_to "Log in", new_user_session_path, class: "btn btn-primary btn-block" %>
-  </div>
-  <div class="signup_bottun">
+  <div class="d-grid gap-2 col-5 mx-auto">
+    <%= link_to "Log in", new_user_session_path, class: "btn btn-primary btn-block " %>
     <%= link_to "Sign up", new_user_registration_path, class: "btn btn-success btn-block" %>
   </div>
     

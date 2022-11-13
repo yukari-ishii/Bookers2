@@ -1,38 +1,36 @@
-<%= render 'users/user', user: @user %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 side_bar">
+      <%= render 'users/user', user: @book.user %>
 
-<div class="new_book">
-  <h1>New book</h1>
-    <%= form_with model: @book1 do |f| %>
-      <h4>Title</h4>
-        <%= f.text_field :title %>
-      <h4>Opinion</h4>
-        <%= f.text_area :body %><br>
-      <%= f.submit 'Create Book' %>
-    <% end %>
+      <%= render 'book', book: @book1 %>
+    </div>
+    <div class="col-lg-8 book_detail">
+      <h2>Book detail</h2>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>
+              <%= link_to user_path(@book.user.id) do %>
+              <%= image_tag @book.user.get_profile_image(100, 100) %><br>
+              <%= @book.user.name %>
+              <% end %>
+            </td>    
+            <td>
+              <%= link_to book_path(@book.id) do %>
+              <%= @book.title %></td>
+              <% end %>
+            </td>
+            <td><%= @book.body %></td>
+            <td>
+              <% if @book.user == current_user %>
+            <td><%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-success btn-block btn-sm w-auto" %></td>
+            <td><%= link_to "Destroy", book_path(@book), class: "btn btn-danger btn-block btn-sm w-auto", method: :delete, "data-confirm" => "本当に消しますか？" %></td>
+              <% end %>
+            </td>    
+          </tr>
+        </tbody>
+     </table>
+    </div>
+  </div>
 </div>
-
-<div class="book_detail">
-  <h1>Book detail</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Opinion</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>画像</td>
-        <td><%= @book.title %></td>
-        <td><%= @book.body %></td>
-        <td>
-          <% if @book.user == current_user %>
-          <%= link_to "Edit", edit_book_path(@book.id) %>
-          <%= link_to "Destroy", book_path(@book), method: :delete %>
-          <% end %>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
