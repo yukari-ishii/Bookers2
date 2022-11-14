@@ -1,11 +1,11 @@
-<div class="container">
+<div class="container px-5">
   <div class="row">
-    <div class="col-lg-4 side_bar">
+    <div class="col-md-3">
       <%= render 'user', user: current_user %>
 
       <%= render 'books/book', book: @book %>
     </div>
-    <div class="col-lg-8 books">
+    <div class="col-md-8 offset-md-1">
       <h2>Users</h2>
       <table class="table">
         <thead>
@@ -20,7 +20,7 @@
           <tr>
             <td><%= image_tag user.get_profile_image(100, 100) %></td>
             <td><%= user.name %></td>
-            <td><%= link_to "show", user_path(user.id) %></td>
+            <td><%= link_to "Show", user_path(user.id) %></td>
           </tr>
           <% end %>
         </tbody>

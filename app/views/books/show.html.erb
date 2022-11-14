@@ -1,11 +1,12 @@
-<div class="container">
+<div><%= flash[:notice] %></div>
+<div class="container px-5">
   <div class="row">
-    <div class="col-lg-4 side_bar">
+    <div class="col-md-3">
       <%= render 'users/user', user: @book.user %>
 
       <%= render 'book', book: @book1 %>
     </div>
-    <div class="col-lg-8 book_detail">
+    <div class="col-md-8 offset-md-1">
       <h2>Book detail</h2>
       <table class="table">
         <tbody>
@@ -15,7 +16,7 @@
               <%= image_tag @book.user.get_profile_image(100, 100) %><br>
               <%= @book.user.name %>
               <% end %>
-            </td>    
+            </td>
             <td>
               <%= link_to book_path(@book.id) do %>
               <%= @book.title %></td>
@@ -27,7 +28,7 @@
             <td><%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-success btn-block btn-sm w-auto" %></td>
             <td><%= link_to "Destroy", book_path(@book), class: "btn btn-danger btn-block btn-sm w-auto", method: :delete, "data-confirm" => "本当に消しますか？" %></td>
               <% end %>
-            </td>    
+            </td>
           </tr>
         </tbody>
      </table>

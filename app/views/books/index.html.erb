@@ -7,14 +7,14 @@
   </ul>
 <% end %>
 
-<div class="container">
+<div class="container px-5">
   <div class="row">
-    <div class="col-lg-4 side_bar">
+    <div class="col-md-3">
       <%= render 'users/user', user: current_user %>
 
       <%= render 'book', book: @book %>
     </div>
-    <div class="col-lg-8 books">
+    <div class="col-md-8 offset-md-1">
       <h2>Books</h2>
       <table class="table">
         <thead>

@@ -1,23 +1,27 @@
-<div class="editing_book">
-  <%= form_with model:@book, url: book_path(@book.id), method: :patch do |f| %>
-    <h2>Editing Book</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-5 mx-auto">
+      <%= form_with model:@book, url: book_path(@book.id), method: :patch do |f| %>
+        <h2>Editing Book</h2>
     
-    <% if @book.errors.any? %>
-      <h3><%= @book.errors.count %>error prohibited this obj from being saved:</h3>
-      <ul>
-        <% @book.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+        <% if @book.errors.any? %>
+          <h3><%= @book.errors.count %>error prohibited this obj from being saved:</h3>
+          <ul>
+            <% @book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+            <% end %>
+          </ul>
         <% end %>
-      </ul>
-    <% end %>
 
-      <h3>Title</h3><br>
-        <%= f.text_field :title %>
-      <h3>Opinion</h3><br>
-        <%= f.text_area :body %>
-      <br><%= f.submit 'Update Book', class: 'btn btn-success' %>
+          <p>Title</p><br>
+            <%= f.text_field :title %>
+          <p>Opinion</p><br>
+            <%= f.text_area :body %>
+          <br><%= f.submit 'Update Book', class: 'btn btn-success' %>
   
-      <br><%= link_to "Show", book_path(@book.id) %>
-          <%= link_to "Back", "/books" %>
-  <% end %>
+          <br><%= link_to "Show", book_path(@book.id) %>
+              <%= link_to "Back", "/books" %>
+      <% end %>
+    </div>
+  </div>
 </div>
